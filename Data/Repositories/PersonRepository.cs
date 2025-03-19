@@ -89,16 +89,13 @@ namespace DriverLicence.Data.Repositories
 
        public async Task<bool> CheckExistByNationalNumber(string nationalNumber)
         {
-            var person = await _context.Persons.FirstOrDefaultAsync(p => p.NationalNumber == nationalNumber);
-            if (person != null) return true;
-            return false;
+            return await _context.Persons.AnyAsync(p => p.NationalNumber == nationalNumber);
            
         }
         public async Task<bool> CheckExistByEmail(string email)
         {
-            var person = await _context.Persons.FirstOrDefaultAsync(p => p.Email == email);
-            if (person != null) return true;
-            return false;
+            return await _context.Persons.AnyAsync(p => p.Email == email);
+
 
         }
     }
