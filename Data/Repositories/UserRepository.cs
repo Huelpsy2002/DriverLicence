@@ -94,5 +94,7 @@ namespace DriverLicence.Data.Repositories
         {
             return await _context.Users.AnyAsync(u => u.Username == username);
         }
+        
+
     }
 }

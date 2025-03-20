@@ -1,4 +1,5 @@
-﻿using DriverLicence.Models.Domains;
+﻿using DriverLicence.Data.Repositories;
+using DriverLicence.Models.Domains;
 using System.Text.RegularExpressions;
 
 namespace DriverLicence.Business.Validations
@@ -8,12 +9,25 @@ namespace DriverLicence.Business.Validations
 
         private List<string> _errors;
 
-        public List<string> Errors => _errors;
+   
 
         public UserValidations()
         {
             _errors = new List<string>();
         }
+
+
+        public  string HashPassword(string password)
+        {
+            return BCrypt.Net.BCrypt.HashPassword(password);
+        }
+        public  bool VerifyPassword(string password, string hashedPassword)
+        {
+            return BCrypt.Net.BCrypt.Verify(password, hashedPassword);
+        }
+
+
+
 
         public List<string> Validate(User user)
         {
@@ -25,7 +39,7 @@ namespace DriverLicence.Business.Validations
 
             return _errors;
         }
-
+        
         private void ValidateUsername(string username)
         {
             if (string.IsNullOrWhiteSpace(username))

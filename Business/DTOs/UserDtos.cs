@@ -24,10 +24,10 @@
     // For updating a user (PUT operations)
     public class UpdateUserDto
     {
-        public string Username { get; set; }
-        public string Password { get; set; } // Optional - can be null if not changing
-        public bool Active { get; set; }
-        public string Role { get; set; }
+        public string? Username { get; set; }
+        public string? Password { get; set; } // Optional - can be null if not changing
+        public bool? Active { get; set; }
+        public string? Role { get; set; }
     }
 
     // For authentication
