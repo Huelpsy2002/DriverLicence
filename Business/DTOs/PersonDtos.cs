@@ -35,7 +35,7 @@
          
             public string FullName { get; set; }
 
-            public DateTime BirthDate { get; set; }
+            public DateTime? BirthDate { get; set; }
 
             public string PhoneNumber { get; set; }
 
@@ -61,7 +61,6 @@
             public string Nationality { get; set; }
             public string ImagePath { get; set; }
             public string Gender { get; set; }
-            public int Age { get; set; }
         }
 
         // DTO for list views (simplified data)
