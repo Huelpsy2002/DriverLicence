@@ -6,7 +6,8 @@ namespace DriverLicence.Data.UnitOfWork
     public interface IUnitOfWork : IDisposable
     {
         IUserRepository UserRepository { get; }
-        
+        IPersonRepository PersonRepository { get; } 
+
 
         Task<int> SaveChangesAsync();
         void Dispose();

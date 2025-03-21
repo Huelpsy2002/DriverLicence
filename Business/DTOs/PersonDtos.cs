@@ -1,10 +1,11 @@
-﻿namespace DriverLicence.Business.DTOs
-{
-    using System;
-    using System.ComponentModel.DataAnnotations;
+﻿
+using System;
+using System.ComponentModel.DataAnnotations;
 
-    namespace DriverLicence.Models.DTOs
-    {
+
+namespace DriverLicence.Business.DTOs
+{
+   
         // DTO for creating a new person
         public class PersonCreateDto
         {
@@ -53,7 +54,6 @@
         // DTO for returning person details
         public class PersonDto
         {
-            public string NationalNumber { get; set; }
             public string FullName { get; set; }
             public DateTime BirthDate { get; set; }
             public string PhoneNumber { get; set; }
@@ -73,4 +73,4 @@
             public string Gender { get; set; }
         }
     }
-}
+

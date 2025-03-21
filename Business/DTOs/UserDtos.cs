@@ -1,4 +1,6 @@
-﻿namespace DriverLicence.Business.DTOs
+﻿using DriverLicence.Models.Domains;
+using DriverLicence.Business.DTOs;
+namespace DriverLicence.Business.DTOs
 {
     // For retrieving user data (GET operations)
     public class UserDto
@@ -10,6 +12,7 @@
         public bool Active { get; set; }
         public string Role { get; set; }
         public string NationalNumber { get; set; }
+        public PersonDto personDto { get; set; }
     }
 
     // For creating a new user (POST operations)
@@ -19,6 +22,7 @@
         public string Password { get; set; }
         public string Role { get; set; }
         public string NationalNumber { get; set; }
+        public PersonCreateDto personCreateDto { get; set; }
     }
 
     // For updating a user (PUT operations)
@@ -28,6 +32,7 @@
         public string? Password { get; set; } // Optional - can be null if not changing
         public bool? Active { get; set; }
         public string? Role { get; set; }
+        public PersonUpdateDto personUpdateDto {get;set;}
     }
 
     // For authentication

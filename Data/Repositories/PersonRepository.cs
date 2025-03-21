@@ -15,7 +15,7 @@ namespace DriverLicence.Data.Repositories
         Task<IEnumerable<Person>> GetByNationality(string nationalty);
         Task<IEnumerable<Person>> GetByGender(string gender);
         Task Add(Person person);
-        Task Update(Person person);
+        void Update(Person person);
         void Delete(Person person);
         Task<bool> CheckExistByNationalNumber(string nationalNumber);
         Task<bool> CheckExistByEmail(string email);
@@ -78,13 +78,13 @@ namespace DriverLicence.Data.Repositories
             await _context.Persons.AddAsync(person);
         }
 
-        public async Task Update(Person person)
+        public void Update(Person person)
         {
             
         }
 
-        public void Delete(Person person) {
-             _context.Persons.Remove(person);
+        public void  Delete(Person person) {
+              _context.Persons.Remove(person);
         }
 
        public async Task<bool> CheckExistByNationalNumber(string nationalNumber)
