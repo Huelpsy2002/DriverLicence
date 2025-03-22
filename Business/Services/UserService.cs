@@ -101,8 +101,7 @@ namespace DriverLicence.Business.Services
             {
                 Username = createUserDto.Username,
                 Password = createUserDto.Password,
-                Role = createUserDto.Role,
-                NationalNumber = createUserDto.NationalNumber
+                NationalNumber = createUserDto.personCreateDto.NationalNumber
             };
             var person = new Person
             {

@@ -19,9 +19,7 @@ namespace DriverLicence.Business.DTOs
     public class CreateUserDto
     {
         public string Username { get; set; }
-        public string Password { get; set; }
-        public string Role { get; set; }
-        public string NationalNumber { get; set; }
+        public string Password { get; set; }        
         public PersonCreateDto personCreateDto { get; set; }
     }
 

@@ -32,6 +32,11 @@ namespace DriverLicence.Models.Domains
         [StringLength(255)]
         public string NationalNumber { get; set; }
         public Person Person { get; set; }
+        public ICollection<Certifications>Certifications { get; set; }
+        public ICollection<Licences> Licences { get; set; }
+        public Drivers Driver { get; set; }
+        public ICollection<Requests> Requests { get; set; }
+
     }
 
 }

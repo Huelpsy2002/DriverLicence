@@ -1,6 +1,8 @@
 
 using DriverLicence.Business.Services;
+using DriverLicence.Business.Validations;
 using DriverLicence.Data;
+using DriverLicence.Data.Repositories;
 using DriverLicence.Data.UnitOfWork;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +21,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 builder.Services.AddScoped<IUserService, UserService>();
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+
+builder.Services.AddScoped<UserValidations>();
+builder.Services.AddScoped<PersonValidations>();
 //builder.Services.AddScoped<IBlogsLogic, BlogsLogic>();
 //builder.Services.AddScoped<ICommentsLogic, CommentsLogic>();
 
