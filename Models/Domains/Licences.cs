@@ -15,6 +15,6 @@ namespace DriverLicence.Models.Domains
         public int UserId { get; set; }
         public User User { get; set; }
         public Drivers Driver { get; set; }
-
+        public Suspensions Suspension { get; set; }
     }
 }

@@ -22,6 +22,9 @@ namespace DriverLicence.Data
         public DbSet<Drivers> Drivers { get; set; }
         public DbSet<Licences>Licences { get; set; }
         public DbSet<Requests> Requests { get; set; }
+        public DbSet<Logs>Logs { get; set; }
+        public DbSet<Suspensions> Suspensions { get; set; }
+        public DbSet<Transactions> Transactions { get; set; }
 
        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -138,6 +141,46 @@ namespace DriverLicence.Data
             modelBuilder.Entity<Tests>()
                 .HasIndex(t => t.TestClassId)
                 .IsUnique();
+            //-------------------------------------------------------
+
+
+            //----- one-many user-logs----
+            modelBuilder.Entity<Logs>()
+                .HasOne(l => l.User)
+                .WithMany(u => u.Logs)
+                .HasForeignKey(l => l.UserId)
+                .OnDelete(DeleteBehavior.NoAction);
+            //-----------------------------------------------------------
+
+
+            //-----one-one suspension-licence--------
+            modelBuilder.Entity<Licences>()
+                .HasOne(l => l.Suspension)
+                .WithOne(s => s.Licence)
+                .HasForeignKey<Suspensions>(s => s.LicenceNumber)
+                .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Suspensions>()
+                .HasIndex(s => s.LicenceNumber)
+                .IsUnique();
+            //-------------------------------------------------------
+
+            //----- one-many user-transactions----
+            modelBuilder.Entity<Transactions>()
+                .HasOne(t => t.User)
+                .WithMany(u => u.Transactions)
+                .HasForeignKey(t => t.UserId)
+                .OnDelete(DeleteBehavior.NoAction);
+            //-----------------------------------------------------------
+
+
+            //----- one-many transaction-payments------------------------
+            modelBuilder.Entity<Payments>()
+                .HasOne(p => p.Transaction)
+                .WithMany(t => t.Payments)
+                .HasForeignKey(p => p.TransactionId)
+                .OnDelete(DeleteBehavior.NoAction);
+            //-----------------------------------------------------------
+
         }
 
     }

@@ -36,7 +36,8 @@ namespace DriverLicence.Models.Domains
         public ICollection<Licences> Licences { get; set; }
         public Drivers Driver { get; set; }
         public ICollection<Requests> Requests { get; set; }
-
+        public ICollection<Logs>Logs { get; set; }
+        public ICollection<Transactions>Transactions { get; set; }
     }
 
 }
