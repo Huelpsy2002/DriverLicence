@@ -14,5 +14,6 @@ namespace DriverLicence.Models.Domains
 
         public Services Services { get; set; }
         public int ServiceId { get; set; }
+        public TestAppointments TestAppointment { get; set; }
     }
 }

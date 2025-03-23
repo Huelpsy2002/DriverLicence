@@ -10,5 +10,7 @@ namespace DriverLicence.Models.Domains
         public string ClassDescription { get; set; }
         public int ClassFees { get; set; }
 
+        public Tests Test { get; set; }
+
     }
 }

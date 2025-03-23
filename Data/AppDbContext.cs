@@ -17,6 +17,12 @@ namespace DriverLicence.Data
         public DbSet<TestClasses> TestClasses { get; set; }
         public DbSet<Services> Services { get; set; }
         public DbSet<Certifications>Certifications { get; set; }
+        public DbSet<Tests> Tests { get; set; }
+        public DbSet<TestAppointments> TestAppointments { get; set; }
+        public DbSet<Drivers> Drivers { get; set; }
+        public DbSet<Licences>Licences { get; set; }
+        public DbSet<Requests> Requests { get; set; }
+
        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -98,6 +104,40 @@ namespace DriverLicence.Data
                 .WithMany(s=>s.Requests)
                 .HasForeignKey(r => r.ServiceId)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            //------one-one testAppointment-request-------------------------
+            modelBuilder.Entity<Requests>()
+                 .HasOne(r=>r.TestAppointment)
+                 .WithOne(t=>t.Request)
+                 .HasForeignKey<TestAppointments>(t=>t.RequestNumber)
+                 .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<TestAppointments>()
+                .HasIndex(t=>t.RequestNumber)
+                .IsUnique();
+
+            //---------one-many LicenceClass-TestAppointments-------------
+            modelBuilder.Entity<TestAppointments>()
+                .HasOne(t=>t.LicenceClass)
+                .WithMany(l=>l.TestAppointments)
+                .HasForeignKey(t=>t.LicenceClassId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            //---------one-many TestAppointment-Tests------------
+            modelBuilder.Entity<Tests>()
+                .HasOne(t => t.TestAppointment)
+                .WithMany(t=>t.Tests)
+                .HasForeignKey(t => t.TestAppointmentId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            //------one-one test-testClass-------------------------
+            modelBuilder.Entity<TestClasses>()
+                 .HasOne(t=>t.Test)
+                 .WithOne(t=>t.TestClass)
+                 .HasForeignKey<Tests>(t => t.TestClassId)
+                 .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Tests>()
+                .HasIndex(t => t.TestClassId)
+                .IsUnique();
         }
 
     }

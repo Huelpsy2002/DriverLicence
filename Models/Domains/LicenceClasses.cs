@@ -13,6 +13,7 @@ namespace DriverLicence.Models.Domains
         public int LicenceDuration { get; set; }
         public Licences Licence { get; set; }
 
+        public ICollection<TestAppointments>TestAppointments { get; set; }
 
     }
 }
