@@ -25,7 +25,7 @@ namespace DriverLicence.Models.Domains
         public bool Active { get; set; } = true;
 
         [StringLength(20)]
-        public string Role { get; set; } = "user";
+        public Role Role { get; set; } = Role.user;
 
         // Foreign key reference to Person
         [Required]

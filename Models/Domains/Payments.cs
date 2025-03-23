@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DriverLicence.Models.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace DriverLicence.Models.Domains
 {
@@ -6,10 +7,10 @@ namespace DriverLicence.Models.Domains
     {
         [Key]
         public int Id {get;set;}
-        public string PaymentMethod { get; set; }
+        public PaymentMethod PaymentMethod { get; set; } = PaymentMethod.CreditCard;
         public string PaymentDetails { get; set; }
         public DateTime Date { get; set; }
-        public string Status { get; set; }
+        public PaymentStatus Status { get; set; } = PaymentStatus.Pending;
         public string recipetNumber { get; set; }
         public string GatewayResponse { get; set; }
         public Transactions Transaction { get; set; }

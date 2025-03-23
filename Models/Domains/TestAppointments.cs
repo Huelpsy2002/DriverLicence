@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DriverLicence.Models.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace DriverLicence.Models.Domains
 {
@@ -7,7 +8,7 @@ namespace DriverLicence.Models.Domains
         [Key]
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public int FinalScore { get; set; }
+        public FinalScore FinalScore { get; set; }
         public Requests Request { get; set; }
         public int RequestNumber { get; set; }
 

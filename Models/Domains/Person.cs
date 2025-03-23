@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DriverLicence.Models.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace DriverLicence.Models.Domains
 {
@@ -29,7 +30,7 @@ namespace DriverLicence.Models.Domains
         public string ImagePath { get; set; }
 
         [StringLength(10)]
-        public string Gender { get; set; }
+        public Gender Gender { get; set; }
 
         public  User User { get; set; }
 

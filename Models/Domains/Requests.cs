@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DriverLicence.Models.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace DriverLicence.Models.Domains
 {
@@ -7,7 +8,7 @@ namespace DriverLicence.Models.Domains
         [Key]
         public int RequestNumber { get; set; }
         public DateTime Date { get; set; }
-        public string state { get; set; }
+        public RequestState state { get; set; } = RequestState.Pending;
         public int TotalFees { get; set; }
         public User User { get; set; }
         public int UserId { get; set; }
